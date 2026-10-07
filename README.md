@@ -161,3 +161,10 @@ You will add more files and folders as the coursework develops.
 ## Help with Coursework
 
 If you have questions or encounter issues while working on this coursework, use the [Discord guide](https://portdotacdotuk-my.sharepoint.com/:p:/g/personal/mani_ghahremani_port_ac_uk/IQCMJP6IiR_bQoYUMdXJSRDYAWnajEALZYEXFZyrJkHS1QU) to find the dedicated Discord channel and ask for help. Before posting a new question, check the existing posts to see if your question has already been answered. You can also attend your timetabled practical sessions to get face-to-face support from teaching staff.
+
+## Movie listing
+
+Run `flutter run -d chrome` and open **Movie Listing** from the menu.
+The Dracula listing and ticket selection run entirely in Flutter. The
+**ADD TO ORDER** button displays a local confirmation and total; orders are
+not persisted or sent to a server.
