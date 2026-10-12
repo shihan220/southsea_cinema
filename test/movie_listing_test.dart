@@ -11,7 +11,7 @@ void main() {
     addTearDown(tester.view.resetDevicePixelRatio);
     await tester.pumpWidget(const MaterialApp(home: MovieListing()));
     await tester.pumpAndSettle();
-    expect(find.text('DRACULA (1931) (PG)'), findsOneWidget);
+    expect(find.text('THE AMAZING SPIDER-MAN (2012)'), findsOneWidget);
     expect(find.text('Adult (£7.50)'), findsOneWidget);
     expect(tester.widget<ElevatedButton>(find.byType(ElevatedButton)).onPressed,
         isNull);
