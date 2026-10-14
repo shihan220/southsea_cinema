@@ -15,8 +15,8 @@ void main() {
     expect(find.text('Adult (£7.50)'), findsOneWidget);
     expect(tester.widget<ElevatedButton>(find.byType(ElevatedButton)).onPressed,
         isNull);
-    await tester.ensureVisible(find.byType(DropdownButton<int>));
-    await tester.tap(find.byType(DropdownButton<int>));
+    await tester.ensureVisible(find.byType(DropdownMenu<int>));
+    await tester.tap(find.byType(DropdownMenu<int>));
     await tester.pumpAndSettle();
     await tester.tap(find.text('2').last);
     await tester.pumpAndSettle();

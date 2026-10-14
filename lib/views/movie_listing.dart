@@ -54,7 +54,7 @@ class _MovieListingState extends State<MovieListing> {
                             fontWeight: FontWeight.w400)),
                     const SizedBox(height: 16),
                     const Text(
-                      'Peter PArker becomes Spider-Man and battles the Lizard '
+                      'Peter Parker becomes Spider-Man and battles the Lizard '
                       'While uncovering the truth aboout his parents.',
                     ),
                     const SizedBox(height: 12),
@@ -90,33 +90,27 @@ class _MovieListingState extends State<MovieListing> {
                         spacing: 18,
                         runSpacing: 12,
                         children: [
-                          Container(
+                          DropdownMenu<int>(
                             width: desktop ? 165 : 110,
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 18, vertical: 4),
-                            decoration: BoxDecoration(
-                                color: const Color(0xFFF0F0F0),
-                                border:
-                                    Border.all(color: Colors.grey, width: 2)),
-                            child: DropdownButtonHideUnderline(
-                                child: DropdownButton<int>(
-                              value: _quantity,
-                              isExpanded: true,
-                              dropdownColor: const Color(0xFFF0F0F0),
-                              iconEnabledColor: Colors.black87,
-                              style: TextStyle(
-                                  color: Colors.black, fontSize: fontSize),
-                              items: List.generate(
-                                  _maxTickets + 1,
-                                  (quantity) => DropdownMenuItem(
-                                      value: quantity,
-                                      child: Text('$quantity'))),
-                              onChanged: (value) => setState(() {
-                                _quantity = value!;
-                                _feedback = null;
-                              }),
-                            )),
+                            initialSelection: _quantity,
+                            requestFocusOnTap: false,
+                            dropdownMenuEntries: List.generate(
+                              _maxTickets + 1,
+                              (quantity) => DropdownMenuEntry<int>(
+                                value: quantity,
+                                label: '$quantity',
+                              ),
+                            ),
+                            onSelected: (int? value) {
+                              if (value != null) {
+                                setState(() {
+                                  _quantity = value;
+                                  _feedback = null;
+                                });
+                              }
+                            },
                           ),
+                          
                           Text(
                               'Adult (£${(_pricePence / 100).toStringAsFixed(2)})'),
                         ]),
