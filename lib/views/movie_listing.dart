@@ -48,14 +48,19 @@ class _MovieListingState extends State<MovieListing> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('THE AMAZING SPIDER-MAN (2012)', //SPIDER MAN TITLE//
-                        style: TextStyle(
-                            fontSize: desktop ? 44 : 30,
-                            fontWeight: FontWeight.w400)),
+                    Text(
+                      'THE AMAZING SPIDER-MAN (2012)', //SPIDER MAN TITLE//
+                      style: cinemaHeaderStyle.copyWith(
+                          fontSize: desktop ? 44 : 30,
+                          fontWeight: FontWeight.w400),
+                    ),
                     const SizedBox(height: 16),
                     const Text(
                       'Peter Parker becomes Spider-Man and battles the Lizard '
                       'While uncovering the truth aboout his parents.',
+                      style: TextStyle(
+                        color: cinemaFontMuted,
+                      ),
                     ),
                     const SizedBox(height: 12),
                     const Row(
@@ -118,10 +123,12 @@ class _MovieListingState extends State<MovieListing> {
                       onPressed: _quantity == 0 ? null : _addToOrder,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: cinemaBrand,
-                        foregroundColor: Colors.white,
-                        disabledBackgroundColor: cinemaBrand,
-                        disabledForegroundColor: Colors.white,
-                        shape: const RoundedRectangleBorder(),
+                        foregroundColor: cinemaFontWhite,
+                        disabledBackgroundColor: cinemaSurface,
+                        disabledForegroundColor: cinemaFontMuted,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero,
+                        ),
                         elevation: 0,
                         padding: const EdgeInsets.symmetric(
                             horizontal: 24, vertical: 12),
