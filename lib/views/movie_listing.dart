@@ -63,18 +63,24 @@ class _MovieListingState extends State<MovieListing> {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Text('Runtime: 136 minutes'),
-                        ),
-                        SizedBox(width: 16),
-                        Expanded(
-                          child: Text('Age rating: 12A'),
-                        ),
-                      ],
-                    ),
+                    if (desktop)
+                      const Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: Text('Runtime: 136 minutes')),
+                          SizedBox(width: 16),
+                          Expanded(child: Text('Age rating: 12A')),
+                        ],
+                      )
+                    else
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Runtime: 136 minutes'),
+                          SizedBox(height: 8),
+                          Text('Age rating: 12A'),
+                        ],
+                      ),
                     SizedBox(height: desktop ? 62 : 36),
                     const Text('Southsea Cinema Room'),
                     const SizedBox(height: 32),
