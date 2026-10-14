@@ -23,8 +23,12 @@ void main() {
     await tester.ensureVisible(find.text('ADD TO ORDER'));
     await tester.tap(find.text('ADD TO ORDER'));
     await tester.pumpAndSettle();
-    expect(find.text('Added 2 Adult tickets to your order. Total: £15.00'),
-        findsOneWidget);
+    expect(
+      find.text(
+        'Added 2 Adult tickets for The Amazing Spider-Man. Total: £15.00',
+      ),
+      findsOneWidget,
+    );
     expect(tester.takeException(), isNull);
   });
 }

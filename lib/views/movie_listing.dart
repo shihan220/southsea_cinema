@@ -19,8 +19,8 @@ class _MovieListingState extends State<MovieListing> {
     if (_quantity < 1 || _quantity > _maxTickets) return;
     setState(() {
       final total = _quantity * _pricePence;
-      _feedback =
-          'Added $_quantity Adult ticket${_quantity == 1 ? '' : 's'} to your order. Total: £${(total / 100).toStringAsFixed(2)}';
+      _feedback = 'Added $_quantity Adult ticket${_quantity == 1 ? '' : 's'} '
+          'for The Amazing Spider-Man. Total: £${(total / 100).toStringAsFixed(2)}';
       _quantity = 0;
     });
   }
@@ -110,7 +110,6 @@ class _MovieListingState extends State<MovieListing> {
                               }
                             },
                           ),
-                          
                           Text(
                               'Adult (£${(_pricePence / 100).toStringAsFixed(2)})'),
                         ]),
