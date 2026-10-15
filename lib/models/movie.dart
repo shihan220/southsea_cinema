@@ -5,7 +5,7 @@ class Movie {
   final String ageRating;
   final String runtime;
   final String screeningTime;
-  final String ticketPrice;
+  final double ticketPrice;
   final String imagePath;
 
   Movie({
@@ -18,5 +18,5 @@ class Movie {
     required this.ticketPrice,
     required this.imagePath,
   });
-  
+
 }
