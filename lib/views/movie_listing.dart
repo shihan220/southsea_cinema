@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/widgets/nav_drawer.dart';
+import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
-  const MovieListing({super.key});
+  final Movie movie;
+  const MovieListing({super.key, required this.movie});
 
   @override
   State<MovieListing> createState() => _MovieListingState();
@@ -11,16 +13,15 @@ class MovieListing extends StatefulWidget {
 
 class _MovieListingState extends State<MovieListing> {
   static const _maxTickets = 5;
-  static const _pricePence = 750;
   int _quantity = 0;
   String? _feedback;
 
   void _addToOrder() {
     if (_quantity < 1 || _quantity > _maxTickets) return;
     setState(() {
-      final total = _quantity * _pricePence;
+      final total = _quantity * widget.movie.ticketPrice;
       _feedback = 'Added $_quantity Adult ticket${_quantity == 1 ? '' : 's'} '
-          'for The Amazing Spider-Man. Total: £${(total / 100).toStringAsFixed(2)}';
+          'for ${widget.movie.title}. Total: £${total.toStringAsFixed(2)}';
       _quantity = 0;
     });
   }
@@ -29,6 +30,12 @@ class _MovieListingState extends State<MovieListing> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+      leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: const Text(appTitle, style: cinemaHeaderStyle),
         backgroundColor: cinemaSurface,
         iconTheme: const IconThemeData(color: cinemaBrand),
@@ -49,42 +56,45 @@ class _MovieListingState extends State<MovieListing> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'THE AMAZING SPIDER-MAN (2012)', //SPIDER MAN TITLE//
+                      widget.movie.title, //SPIDER MAN TITLE//
                       style: cinemaHeaderStyle.copyWith(
                           fontSize: desktop ? 44 : 30,
                           fontWeight: FontWeight.w400),
                     ),
                     const SizedBox(height: 16),
-                    const Text(
-                      'Peter Parker becomes Spider-Man and battles the Lizard '
-                      'While uncovering the truth aboout his parents.',
-                      style: TextStyle(
+                     Text(
+                      widget.movie.synopsis,
+                      style: const TextStyle(
                         color: cinemaFontMuted,
                       ),
                     ),
                     const SizedBox(height: 12),
                     if (desktop)
-                      const Row(
+                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(child: Text('Runtime: 136 minutes')),
-                          SizedBox(width: 16),
-                          Expanded(child: Text('Age rating: 12A')),
+                          Expanded(
+                            child: Text('Runtime: ${widget.movie.runtime}')
+                            ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Text('Age rating: ${widget.movie.ageRating}')
+                            ),
                         ],
                       )
                     else
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Runtime: 136 minutes'),
-                          SizedBox(height: 8),
-                          Text('Age rating: 12A'),
+                          Text('Runtime: ${widget.movie.runtime}'),
+                          const SizedBox(height: 8),
+                          Text('Age rating: ${widget.movie.ageRating}'),
                         ],
                       ),
                     SizedBox(height: desktop ? 62 : 36),
                     const Text('Southsea Cinema Room'),
                     const SizedBox(height: 32),
-                    const Text('Thursday 22 Oct 2026, 18:00  - ends at 20:16'),
+                    Text(widget.movie.screeningTime),
                     SizedBox(height: desktop ? 76 : 44),
                     const Text(
                         'Please note that Discounts / Membership Benefits will be applied once you have selected your tickets'),
@@ -122,7 +132,7 @@ class _MovieListingState extends State<MovieListing> {
                             },
                           ),
                           Text(
-                              'Adult (£${(_pricePence / 100).toStringAsFixed(2)})'),
+                              'Adult (£${widget.movie.ticketPrice.toStringAsFixed(2)})'),
                         ]),
                     const SizedBox(height: 48),
                     ElevatedButton(

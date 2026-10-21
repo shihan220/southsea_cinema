@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
+import 'package:southsea_cinema/repositories/movie_repository.dart';
 
 void main() {
   testWidgets('Displays screening and selects tickets locally on mobile',
@@ -9,9 +10,17 @@ void main() {
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
-    await tester.pumpWidget(const MaterialApp(home: MovieListing()));
+
+    final movies = MovieRepository().getMovies();
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: MovieListing(movie: movies[0]),
+      ),
+    );
+
     await tester.pumpAndSettle();
-    expect(find.text('THE AMAZING SPIDER-MAN (2012)'), findsOneWidget);
+    expect(find.text('The Amazing Spider-Man'), findsOneWidget);
     expect(find.text('Adult (£7.50)'), findsOneWidget);
     expect(tester.widget<ElevatedButton>(find.byType(ElevatedButton)).onPressed,
         isNull);
