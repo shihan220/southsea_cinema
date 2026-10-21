@@ -11,6 +11,7 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: cinemaSurface, //coloring the text of the cards
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
