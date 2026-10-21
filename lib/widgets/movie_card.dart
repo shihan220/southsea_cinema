@@ -17,18 +17,18 @@ class MovieCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              movie.imagePath,
-              height: 240,
-              fit: BoxFit.contain,
-            ),
-            const SizedBox(height: 16),
             Text(
               movie.title,
               style: cinemaHeaderStyle,
             ),
             const SizedBox(height: 8),
             Text('Age rating: ${movie.ageRating}'),
+            const SizedBox(height: 16),
+            Image.asset(
+              movie.imagePath,
+              height: 240,
+              fit: BoxFit.contain,
+            ),
             const SizedBox(height: 8),
             Text(
               movie.synopsis,
