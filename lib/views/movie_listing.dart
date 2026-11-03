@@ -30,7 +30,7 @@ class _MovieListingState extends State<MovieListing> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      leading: IconButton(
+        leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
@@ -62,7 +62,7 @@ class _MovieListingState extends State<MovieListing> {
                           fontWeight: FontWeight.w400),
                     ),
                     const SizedBox(height: 16),
-                     Text(
+                    Text(
                       widget.movie.synopsis,
                       style: const TextStyle(
                         color: cinemaFontMuted,
@@ -70,16 +70,15 @@ class _MovieListingState extends State<MovieListing> {
                     ),
                     const SizedBox(height: 12),
                     if (desktop)
-                       Row(
+                      Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
-                            child: Text('Runtime: ${widget.movie.runtime}')
-                            ),
+                              child: Text('Runtime: ${widget.movie.runtime}')),
                           const SizedBox(width: 16),
                           Expanded(
-                            child: Text('Age rating: ${widget.movie.ageRating}')
-                            ),
+                              child: Text(
+                                  'Age rating: ${widget.movie.ageRating}')),
                         ],
                       )
                     else
@@ -131,8 +130,7 @@ class _MovieListingState extends State<MovieListing> {
                               }
                             },
                           ),
-                          Text(
-                              'Adult (£${widget.movie.ticketPrice.toStringAsFixed(2)})'),
+                          Text('Adult (${widget.movie.formattedPrice})'),
                         ]),
                     const SizedBox(height: 48),
                     ElevatedButton(
