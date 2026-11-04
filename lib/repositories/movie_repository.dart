@@ -1,6 +1,7 @@
 import 'package:southsea_cinema/models/movie.dart';
 
 class MovieRepository {
+  // Provide the two films for the home page.
   List<Movie> getMovies() {
     return [
       Movie(
@@ -28,6 +29,7 @@ class MovieRepository {
     ];
   }
 
+  // Find a film by ID, or return null if missing.
   Movie? getMovieById(String id) {
     final movies = getMovies();
 

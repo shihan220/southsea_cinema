@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
 
 void main() {
+  // Check the home title, cards and booking buttons.
   testWidgets('Basic app loading test', (WidgetTester tester) async {
     await tester.pumpWidget(const SouthseaCinemaApp());
     expect(find.text(appTitle), findsOneWidget);
     expect(find.byType(MovieCard), findsWidgets);
     expect(find.text('BOOK TICKETS'), findsWidgets);
   });
+  // Test opening a film, selecting tickets and booking.
   testWidgets('User can book tickets for a movie', (tester) async {
     await tester.pumpWidget(const SouthseaCinemaApp());
     await tester.pumpAndSettle();
