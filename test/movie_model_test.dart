@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/models/movie.dart';
 
 void main() {
-  // Check constructor values and price formatting.
   group('Movie model', () {
     test('constructor stores movie details', () {
       final movie = Movie(

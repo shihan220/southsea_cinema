@@ -4,7 +4,6 @@ import 'package:southsea_cinema/widgets/nav_drawer.dart';
 import 'package:southsea_cinema/models/movie.dart';
 
 class MovieListing extends StatefulWidget {
-  // Film selected from the home page.
   final Movie movie;
   const MovieListing({super.key, required this.movie});
 
@@ -20,7 +19,6 @@ class _MovieListingState extends State<MovieListing> {
   void _addToOrder() {
     if (_quantity < 1 || _quantity > _maxTickets) return;
     setState(() {
-      // Calculate the total using this film's price.
       final total = _quantity * widget.movie.ticketPrice;
       _feedback = 'Added $_quantity Adult ticket${_quantity == 1 ? '' : 's'} '
           'for ${widget.movie.title}. Total: £${total.toStringAsFixed(2)}';
@@ -132,7 +130,6 @@ class _MovieListingState extends State<MovieListing> {
                               }
                             },
                           ),
-                          // Display the formatted price from the model.
                           Text('Adult (${widget.movie.formattedPrice})'),
                         ]),
                     const SizedBox(height: 48),

@@ -21,7 +21,6 @@ class HomeView extends StatelessWidget {
         elevation: 0,
       ),
       drawer: const NavDrawer(),
-      // Show the films as a scrollable list of cards.
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: movies.length,

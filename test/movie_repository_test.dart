@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:southsea_cinema/repositories/movie_repository.dart';
 
 void main() {
-  // Check both films and searches for existing or missing IDs.
   group('MovieRepository', () {
     test('getMovies returns our two films', () {
       final repository = MovieRepository();

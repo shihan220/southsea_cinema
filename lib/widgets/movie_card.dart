@@ -3,7 +3,6 @@ import 'package:southsea_cinema/models/movie.dart';
 import 'package:southsea_cinema/constants.dart';
 import 'package:southsea_cinema/views/movie_listing.dart';
 
-// Reuse this card for each film.
 class MovieCard extends StatelessWidget {
   final Movie movie;
 
@@ -40,7 +39,6 @@ class MovieCard extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Open the selected film's listing.
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
                     return MovieListing(movie: movie);

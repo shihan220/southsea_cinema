@@ -1,4 +1,3 @@
-// Film details used by the cards and listing.
 class Movie {
   final String id;
   final String title;
@@ -20,7 +19,6 @@ class Movie {
     required this.imagePath,
   });
 
-  // Format the price as £7.50.
   String get formattedPrice {
     return '£${ticketPrice.toStringAsFixed(2)}';
   }
