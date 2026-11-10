@@ -55,6 +55,12 @@ class _MovieListingState extends State<MovieListing> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Image.asset(
+                      widget.movie.imagePath,
+                      height: 240,
+                      fit: BoxFit.contain,
+                    ),
+                    const SizedBox(height: 16),
                     Text(
                       widget.movie.title,
                       style: cinemaHeaderStyle.copyWith(
